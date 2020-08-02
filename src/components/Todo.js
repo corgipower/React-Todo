@@ -4,7 +4,9 @@ const Todo = (props) => {
     return(
         <div>
             <p>Todo</p>
-            <p key={props.id} onDoubleClick={props.doubleClick}>{props.task}</p>
+            {props.taskArr.map(tasks => ( 
+                <p key={tasks.id} onDoubleClick={props.doubleClick}>{tasks.task}</p>
+            ))}
         </div>
     )
 }

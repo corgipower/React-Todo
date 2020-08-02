@@ -9,7 +9,7 @@ const TodoList = (props) => {
         <div>
             <p>TodoList</p>
             <TodoForm task={props.task} change={props.change} submit={props.submit} />
-            <Todo task={props.task} id={props.id} doubleClick={props.doubleClick} />
+            <Todo taskArr={props.taskArr} task={props.task} id={props.id} doubleClick={props.doubleClick} />
         </div>
     )
 }

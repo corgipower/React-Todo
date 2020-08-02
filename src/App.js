@@ -9,6 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      taskArr: [],
       task: '',
       id: '',
       completed: false,
@@ -17,8 +18,11 @@ class App extends React.Component {
 
   doubleClickHandler = event => {
     event.preventDefault();
-    alert('clicked');
-    event.target.style.textDecoration = 'line-through';
+    this.setState({
+      completed: !this.state.completed
+    })
+
+    this.state.completed === false ? event.target.style.textDecoration = 'line-through' : event.target.style.textDecoration = 'none';
   };
 
   changeHandler = event => {
@@ -30,19 +34,24 @@ class App extends React.Component {
   submitHandler = event => {
     event.preventDefault();
     this.setState({
-                  task: this.state.task,
-                  id: this.state.id,
-                  completed: this.state.completed
-                  })
-
-  console.log(this.state)
+      taskArr: [
+        ...this.state.taskArr,
+        {
+        task: this.state.task,
+        id: this.state.id,
+        completed: this.state.completed
+        }]
+    })
+    this.setState({
+      task: '',
+    })
   }
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList task={this.state.task} id={this.state.id} change={this.changeHandler} submit={this.submitHandler} doubleClick={this.doubleClickHandler} />
+        <TodoList taskArr={this.state.taskArr} task={this.state.task} id={this.state.id} change={this.changeHandler} submit={this.submitHandler} doubleClick={this.doubleClickHandler} />
       </div>
     );
   }

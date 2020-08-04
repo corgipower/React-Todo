@@ -5,7 +5,8 @@ const Todo = (props) => {
         <div>
             <p>Todo</p>
             {props.taskArr.map(tasks => ( 
-                <p key={tasks.id} 
+                <p style={{textDecoration: tasks.completed ? 'line-through' : 'none'}} 
+                   key={tasks.id} 
                    onClick={() => props.toggle(tasks.id)}>{tasks.task}</p>
             ))}
             <form onSubmit={props.removeCompleted}>

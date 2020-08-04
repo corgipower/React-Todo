@@ -17,7 +17,6 @@ class App extends React.Component {
   }
 
   toggle = id => {
-    console.log(this.state.completed)
     this.setState({
       taskArr: this.state.taskArr.map(item => {
         if(id === item.id) {
@@ -35,7 +34,7 @@ class App extends React.Component {
   removeCompleted = event => {
     event.preventDefault();
     this.setState({
-      taskArr: this.state.taskArr.filter(item => item.completed === true)
+      taskArr: this.state.taskArr.filter(item => item.completed === false)
     })
   }
 
@@ -71,7 +70,6 @@ class App extends React.Component {
                   id={this.state.id} 
                   change={this.changeHandler} 
                   submit={this.submitHandler} 
-                  doubleClick={this.doubleClickHandler}
                   toggle={this.toggle}
                   removeCompleted={this.removeCompleted} />
       </div>

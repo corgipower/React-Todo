@@ -14,7 +14,6 @@ const TodoList = (props) => {
             <Todo taskArr={props.taskArr} 
                   task={props.task} 
                   id={props.id} 
-                  doubleClick={props.doubleClick}
                   toggle={props.toggle}
                   removeCompleted={props.removeCompleted} />
         </div>

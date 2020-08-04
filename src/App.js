@@ -16,14 +16,28 @@ class App extends React.Component {
     };
   }
 
-  doubleClickHandler = event => {
+  toggle = id => {
+    console.log(this.state.completed)
+    this.setState({
+      taskArr: this.state.taskArr.map(item => {
+        if(id === item.id) {
+          console.log(item)
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        }
+        return item;
+      })
+    })
+  }
+
+  removeCompleted = event => {
     event.preventDefault();
     this.setState({
-      completed: !this.state.completed
+      taskArr: this.state.taskArr.filter(item => item.completed === true)
     })
-
-    this.state.completed === false ? event.target.style.textDecoration = 'line-through' : event.target.style.textDecoration = 'none';
-  };
+  }
 
   changeHandler = event => {
     const date = Date.now();
@@ -39,9 +53,10 @@ class App extends React.Component {
         {
         task: this.state.task,
         id: this.state.id,
-        completed: this.state.completed
+        completed: false
         }]
     })
+    console.log(this.state)
     this.setState({
       task: '',
     })
@@ -51,7 +66,14 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList taskArr={this.state.taskArr} task={this.state.task} id={this.state.id} change={this.changeHandler} submit={this.submitHandler} doubleClick={this.doubleClickHandler} />
+        <TodoList taskArr={this.state.taskArr} 
+                  task={this.state.task} 
+                  id={this.state.id} 
+                  change={this.changeHandler} 
+                  submit={this.submitHandler} 
+                  doubleClick={this.doubleClickHandler}
+                  toggle={this.toggle}
+                  removeCompleted={this.removeCompleted} />
       </div>
     );
   }

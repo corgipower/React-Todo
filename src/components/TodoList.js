@@ -8,8 +8,15 @@ const TodoList = (props) => {
     return (
         <div>
             <p>TodoList</p>
-            <TodoForm task={props.task} change={props.change} submit={props.submit} />
-            <Todo taskArr={props.taskArr} task={props.task} id={props.id} doubleClick={props.doubleClick} />
+            <TodoForm task={props.task} 
+                      change={props.change} 
+                      submit={props.submit} />
+            <Todo taskArr={props.taskArr} 
+                  task={props.task} 
+                  id={props.id} 
+                  doubleClick={props.doubleClick}
+                  toggle={props.toggle}
+                  removeCompleted={props.removeCompleted} />
         </div>
     )
 }

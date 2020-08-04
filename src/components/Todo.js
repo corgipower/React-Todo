@@ -5,8 +5,12 @@ const Todo = (props) => {
         <div>
             <p>Todo</p>
             {props.taskArr.map(tasks => ( 
-                <p key={tasks.id} onDoubleClick={props.doubleClick}>{tasks.task}</p>
+                <p key={tasks.id} 
+                   onClick={() => props.toggle(tasks.id)}>{tasks.task}</p>
             ))}
+            <form onSubmit={props.removeCompleted}>
+                <button type='submit'>Clear completed</button>
+            </form>
         </div>
     )
 }

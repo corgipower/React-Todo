@@ -10,12 +10,12 @@ const TodoList = (props) => {
             <p>TodoList</p>
             <TodoForm task={props.task} 
                       change={props.change} 
-                      submit={props.submit} />
+                      submit={props.submit}
+                      removeCompleted={props.removeCompleted} />
             <Todo taskArr={props.taskArr} 
                   task={props.task} 
                   id={props.id} 
-                  toggle={props.toggle}
-                  removeCompleted={props.removeCompleted} />
+                  toggle={props.toggle} />
         </div>
     )
 }

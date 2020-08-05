@@ -9,9 +9,6 @@ const Todo = (props) => {
                    key={tasks.id} 
                    onClick={() => props.toggle(tasks.id)}>{tasks.task}</p>
             ))}
-            <form onSubmit={props.removeCompleted}>
-                <button type='submit'>Clear completed</button>
-            </form>
         </div>
     )
 }

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const TodoForm = (props) => {
+    const [task, setTask] = useState('');
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        props.submit(task)
+
+        setTask('');
+    }
+
     return(
         <div>
-            <form onSubmit={props.submit}>
-                <input type='text' name='task' value={props.task} onChange={props.change} />
+            <form onSubmit={submitForm}>
+                <input type='text' name='task' value={task} onChange={(e) => setTask(e.target.value)} />
                 <button type='submit'>Submit</button>
                 <button onClick={props.removeCompleted}>Clear completed</button>
             </form>

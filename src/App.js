@@ -23,7 +23,6 @@ class App extends React.Component {
     this.setState({
       taskArr: this.state.taskArr.map(item => {
         if(id === item.id) {
-          console.log(item)
           return {
             ...item,
             completed: !item.completed
@@ -47,30 +46,23 @@ class App extends React.Component {
                   id: date});
   }
 
-  submitHandler = event => {
-    event.preventDefault();
+  submitHandler = (task) => {
     this.setState({
       taskArr: [
         ...this.state.taskArr,
         {
-        task: this.state.task,
-        id: this.state.id,
+        task: task,
+        id: Date.now(),
         completed: false
         }]
     });
-    this.setState({
-      task: '',
-    })
   }
 
   render() {
-    console.log('task', this.state.task)
     return (
       <div className='wrapper'>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm change={this.changeHandler} 
-                  task={this.state.task}
-                  submit={this.submitHandler} 
+        <TodoForm submit={this.submitHandler} 
                   removeCompleted={this.removeCompleted} />
         <TodoList taskArr={this.state.taskArr} 
                   toggle={this.toggle} />

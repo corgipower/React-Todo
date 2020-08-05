@@ -66,7 +66,7 @@ class App extends React.Component {
   render() {
     console.log('task', this.state.task)
     return (
-      <div>
+      <div className='wrapper'>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm change={this.changeHandler} 
                   task={this.state.task}

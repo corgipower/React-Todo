@@ -6,7 +6,6 @@ import Todo from './Todo'
 const TodoList = (props) => {
     return (
         <div>
-            <p>TodoList</p>
             <Todo taskArr={props.taskArr} 
                   toggle={props.toggle} />
         </div>

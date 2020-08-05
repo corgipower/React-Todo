@@ -1,11 +1,11 @@
 import React from 'react';
+import './Todo.css'
 
 const Todo = (props) => {
     return(
         <div>
-            <p>Todo</p>
             {props.taskArr.map(tasks => ( 
-                <p style={{textDecoration: tasks.completed ? 'line-through' : 'none'}} 
+                <p className={tasks.completed ? 'completed' : ''} 
                    key={tasks.id} 
                    onClick={() => props.toggle(tasks.id)}>{tasks.task}</p>
             ))}
